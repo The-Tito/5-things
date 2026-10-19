@@ -24,6 +24,10 @@
   --bar-bg: rgba(247, 246, 242, .72);
   --bar-edge: rgba(255, 255, 255, .7);
 
+  /* Resaltado de marcador: índigo de la familia del acento.
+     Claro: pervinca suave con tinta oscura (12.4:1). Oscuro: índigo profundo con texto claro (7.9:1). */
+  --hl: #D3D2FB;
+
   /* Pasteles de marca (fondos) */
   --rosa: #FAC7DD;
   --amarillo: #F5C642;
@@ -84,6 +88,7 @@
     --lila-ink: #BBA9F5;
     --tint-hi: 26%;
     --tint-lo: 14%;
+    --hl: #3C3CA0;
   }
 }
 :root[data-theme="dark"] {
@@ -94,6 +99,7 @@
   --bar-bg: rgba(19,19,21,.7); --bar-edge: rgba(255,255,255,.08);
   --rosa-ink: #F59CC2; --amarillo-ink: #F5C642; --azul-ink: #8FCDE6; --verde-ink: #B5DD78; --lila-ink: #BBA9F5;
   --tint-hi: 26%; --tint-lo: 14%;
+  --hl: #3C3CA0;
 }
 
 /* Color de tema: se aplica con una clase en la tarjeta, el punto o la semana */
@@ -211,13 +217,13 @@ button, input, a { -webkit-tap-highlight-color: transparent; touch-action: manip
 .small { font-size: .9rem; line-height: 1.5; }
 
 /* Resaltado de marcador: trazo irregular, no rectángulo plano */
-.hl { position: relative; white-space: nowrap; isolation: isolate; color: #161618; background: none; } /* el pastel es claro en ambos modos: tinta siempre oscura */
+.hl { position: relative; white-space: nowrap; isolation: isolate; color: inherit; background: none; }
 .hl::before {
   content: "";
   position: absolute;
   z-index: -1;
   inset: .5em -.12em .02em -.1em;
-  background: var(--hl, var(--rosa));
+  background: var(--hl);
   border-radius: .5em .25em .6em .2em / .35em .6em .3em .55em;
   transform: rotate(-1.6deg) skewX(-6deg);
   transform-origin: left center;
