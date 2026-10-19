@@ -12,11 +12,13 @@ assets/config.js              ← GoatCounter, canal de difusión, perfil
 assets/og/                    imágenes para la vista previa al compartir
 ```
 
-## Antes de publicar
+## Configuración
 
-1. **GoatCounter**: en `assets/config.js`, pon tu código en `goatcounter` (si tu panel es `https://antonio.goatcounter.com`, el código es `antonio`).
-2. **Canal de difusión**: cuando exista, pega su link en `canal` dentro de `assets/config.js`. Mientras esté vacío, el bloque final muestra «Sígueme para la siguiente parte».
-3. **«Por qué importa»**: en `antes-de-la-carrera/index.html` hay cinco comentarios `TODO`. Cambia esas líneas por lo que te pasó de verdad.
+Todo está en `assets/config.js`:
+
+- `goatcounter`: `antonio-selvas` → panel en [antonio-selvas.goatcounter.com](https://antonio-selvas.goatcounter.com).
+- `canal`: link del canal de difusión. Mientras esté vacío, el bloque final muestra «Sígueme para la siguiente parte».
+- `perfil`: tu perfil de Instagram.
 
 ## Publicación (GitHub Pages)
 
@@ -75,4 +77,4 @@ Eventos que se registran en GoatCounter, con el id de cada guía como prefijo:
 | `antes/compartir-01` … | «Mándatelo a tu compu» |
 | `antes/canal` · `antes/perfil` | clic en el bloque final |
 
-Las visitas que llegan con `?ref=reel-antes` se ven en GoatCounter como «Referrer: reel-antes». A los 7 días, anota: comentarios ANTES → visitas con ese ref → clics al canal.
+Las visitas que llegan con `?ref=reel-antes` aparecen en **Top referrers** como `reel-antes`. Para filtrar solo esta serie en el panel, escribe `antes/` o `5-things` en «Filter paths». A los 7 días, anota: comentarios ANTES → visitas con ese ref → clics al canal.
