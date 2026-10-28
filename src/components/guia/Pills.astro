@@ -1,0 +1,8 @@
+---
+/* Píldoras numeradas (mini método). */
+interface Props { items: string[]; label?: string }
+const { items, label } = Astro.props;
+---
+<ol class="pills" aria-label={label}>
+  {items.map((t, i) => <li><b>{i + 1}</b>{t}</li>)}
+</ol>

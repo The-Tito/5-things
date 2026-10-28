@@ -1,0 +1,74 @@
+---
+/* Episodio de «5 cosas»: barra de progreso, portada con contador, nota y bloque final.
+   El cuerpo del .mdx va entre la nota y el bloque final. */
+import type { CollectionEntry } from "astro:content";
+import Base from "./Base.astro";
+import Cta from "../components/Cta.astro";
+import Footer from "../components/Footer.astro";
+import { SITE } from "../site";
+import { resaltado, sinMarcas } from "../lib/texto";
+
+interface Props { entry: CollectionEntry<"guias"> }
+const { data } = Astro.props.entry;
+const titulo = sinMarcas(data.titulo);
+const num = String(data.episodio).padStart(2, "0");
+const total = data.temas.length;
+const base = import.meta.env.BASE_URL;
+---
+<Base
+  title={`${titulo} · 5 cosas`}
+  description={data.descripcion}
+  ogTitle={data.og.titulo ?? titulo}
+  ogDescription={data.og.descripcion ?? data.lede}
+  ogImage={data.og.imagen}
+  ogImageAlt={data.og.alt}
+  noindex={data.borrador}
+  guide={data.guide}
+  total={total}
+>
+  <!-- Barra de progreso fija (aparece al pasar la portada) -->
+  <header class="topbar" aria-label="Tu progreso">
+    <div class="wrap topbar__in">
+      <a class="topbar__title" href="#inicio">{titulo}</a>
+      <div class="topbar__progress">
+        <ul class="dots" aria-label="Ir a un tema">
+          {data.temas.map((t, i) => (
+            <li><a href={`#t${i + 1}`} class={`t-${t.color}`} data-dot={i + 1} aria-label={`${i + 1} · ${t.corto}`}></a></li>
+          ))}
+        </ul>
+        <span class="count-pill"><span data-count>0</span>/{total}</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" id="inicio">
+    <section class="cover" data-cover>
+      <a class="kicker" href={base}>5 cosas <b>Episodio {num}</b></a>
+      <h1 class="display" set:html={resaltado(data.titulo)} />
+      <p class="lede">{data.lede}</p>
+      <p class="byline">Por <a href={SITE.perfil} target="_blank" rel="noopener" data-perfil-link>{SITE.usuario}</a> · {SITE.bio.charAt(0).toLowerCase() + SITE.bio.slice(1).replace(/\.$/, "")}</p>
+
+      <div class="tally">
+        <div class="tally__num" aria-hidden="true"><span data-count>0</span></div>
+        <div class="tally__txt">
+          <strong><span class="tally__todo">de {total} hechos</span><a class="tally__done" href="#cierre">de {total} · ¿y ahora? ↓</a></strong>
+          <div class="tally__bar" aria-hidden="true">
+            {data.temas.map((t, i) => <i class={`t-${t.color}`} data-bar={i + 1}></i>)}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="note" aria-label="Cómo usar esta guía">
+      <p class="label">Cómo usar esta guía</p>
+      <ul class="note__lines">
+        {data.nota.map((l) => <li>{l}</li>)}
+      </ul>
+    </aside>
+
+    <slot />
+
+    <Cta {...data.cta} />
+    <Footer tagline={data.pie} updated={data.actualizado} back="Más guías de 5 cosas →" />
+  </main>
+</Base>

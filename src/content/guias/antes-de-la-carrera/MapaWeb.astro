@@ -1,0 +1,50 @@
+<!-- Mapa animado de la tarjeta 03: frontend → API → backend → base de datos. -->
+<figure class="map" data-play>
+  <svg viewBox="0 0 320 426" role="img" aria-labelledby="map-title map-desc">
+    <title id="map-title">El mapa: cómo se conecta la web</title>
+    <desc id="map-desc">Cuatro cajas de arriba abajo. Frontend, lo que ves. API, el mesero que lleva tu pedido. Backend, la cocina. Base de datos, la despensa. El pedido baja de una caja a la siguiente y la respuesta sube de regreso.</desc>
+    <defs>
+      <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M1 1L8 5L1 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+    <g style="color: var(--ink)">
+      <!-- flechas: baja el pedido (izq.), sube la respuesta (der.) -->
+      <path class="arrow" d="M120 74V114" marker-end="url(#ah)"/>
+      <path class="arrow arrow--back" d="M200 114V74" marker-end="url(#ah)"/>
+      <path class="arrow" d="M120 194V234" marker-end="url(#ah)"/>
+      <path class="arrow arrow--back" d="M200 234V194" marker-end="url(#ah)"/>
+      <path class="arrow" d="M120 314V354" marker-end="url(#ah)"/>
+      <path class="arrow arrow--back" d="M200 354V314" marker-end="url(#ah)"/>
+      <text class="t3" x="110" y="98" text-anchor="end">pedido</text>
+      <text class="t3" x="210" y="98">respuesta</text>
+    </g>
+    <g>
+      <rect class="box box--tema" x="20" y="4" width="280" height="66" rx="14"/>
+      <text class="t1" x="38" y="33">Frontend</text>
+      <text class="t2" x="38" y="53">lo que ves y tocas</text>
+      <text class="t3" x="282" y="42" text-anchor="end">la mesa</text>
+
+      <rect class="box" x="20" y="124" width="280" height="66" rx="14"/>
+      <text class="t1" x="38" y="153">API</text>
+      <text class="t2" x="38" y="173">lleva tu pedido</text>
+      <text class="t3" x="282" y="162" text-anchor="end">el mesero</text>
+
+      <rect class="box" x="20" y="244" width="280" height="66" rx="14"/>
+      <text class="t1" x="38" y="273">Backend</text>
+      <text class="t2" x="38" y="293">reglas, cálculos, permisos</text>
+      <text class="t3" x="282" y="282" text-anchor="end">la cocina</text>
+
+      <rect class="box" x="20" y="364" width="280" height="58" rx="14"/>
+      <text class="t1" x="38" y="390">Base de datos</text>
+      <text class="t2" x="38" y="409">donde se guarda todo</text>
+      <text class="t3" x="282" y="398" text-anchor="end">la despensa</text>
+    </g>
+    <!-- el pedido viaja una vez: baja por la izquierda, sube por la derecha -->
+    <circle class="traveler" r="5.5" cx="0" cy="0" opacity="0">
+      <animateMotion begin="indefinite" dur="3.4s" fill="remove" calcMode="spline" keyTimes="0;1" keySplines=".45 0 .55 1" path="M120 70V364H200V70"/>
+      <animate attributeName="opacity" begin="indefinite" dur="3.4s" values="0;1;1;0" keyTimes="0;.06;.92;1" fill="remove"/>
+    </circle>
+  </svg>
+  <figcaption><strong>Ejemplo:</strong> abres Instagram; la app le pide tus fotos a la API; el backend las busca en la base de datos y te las regresa.</figcaption>
+</figure>

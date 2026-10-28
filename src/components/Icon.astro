@@ -1,0 +1,10 @@
+---
+/* Íconos de línea de los botones. */
+interface Props { name: "flecha" | "copiar" | "compartir" | "check" | "chev" }
+const { name } = Astro.props;
+---
+{name === "flecha" && <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>}
+{name === "copiar" && <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="6.5" y="6.5" width="10" height="10" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M13.5 6.5V5A1.5 1.5 0 0012 3.5H5A1.5 1.5 0 003.5 5v7A1.5 1.5 0 005 13.5h1.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>}
+{name === "compartir" && <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v9M6.5 6.5L10 3l3.5 3.5M4 11v4.5A1.5 1.5 0 005.5 17h9a1.5 1.5 0 001.5-1.5V11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>}
+{name === "check" && <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9.5l3.5 3.5 7.5-8"/></svg>}
+{name === "chev" && <svg class="chev" viewBox="0 0 18 18" aria-hidden="true"><path d="M4.5 7l4.5 4.5L13.5 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>}

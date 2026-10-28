@@ -1,0 +1,18 @@
+---
+import { SITE } from "../site";
+interface Props { tagline?: string; updated?: Date; back?: string }
+const { tagline = SITE.bio, updated, back } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const fecha = updated && updated
+  .toLocaleDateString("es-MX", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" })
+  .replace(".", "");
+---
+<footer class="footer">
+  <p class="footer__sig">{SITE.autor}</p>
+  <p>{tagline}</p>
+  <div class="footer__links">
+    <a href={SITE.perfil} target="_blank" rel="noopener" data-perfil-link>Instagram ↗</a>
+    {back && <a href={base}>{back}</a>}
+  </div>
+  {fecha && <p class="footer__meta">Actualizado: {fecha}</p>}
+</footer>

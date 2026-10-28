@@ -1,0 +1,11 @@
+---
+/* Prompt copiable dentro de una tarjeta. Usa <span class="slot">[tema]</span> para los huecos. */
+import CopyButton from "../CopyButton.astro";
+interface Props { n: number; title: string; id: string; track?: string }
+const { n, title, id, track } = Astro.props;
+---
+<div class="prompt">
+  <p class="prompt__head"><b>{n}</b>{title}</p>
+  <p class="prompt__text" id={id}><slot /></p>
+  <CopyButton target={id} track={track} />
+</div>

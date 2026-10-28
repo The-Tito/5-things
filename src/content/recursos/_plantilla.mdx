@@ -1,0 +1,35 @@
+---
+# PLANTILLA · recurso suelto (prompt, plantilla, lista…)
+# Copia este archivo como recursos/<carpeta>.mdx. El nombre es la URL: /5-things/<carpeta>/
+# `guide` prefija los eventos de GoatCounter (ej. skill/copiar). Debe ser único.
+guide: CAMBIA
+etiqueta: Prompt
+titulo: CAMBIA título con *resaltado*
+lede: CAMBIA una o dos líneas.
+descripcion: CAMBIA una línea para buscadores.
+og:
+  imagen: assets/og/CAMBIA.png
+portada:
+  emoji: 🧩
+  color: lila
+  resumen: CAMBIA lo que aparece en la tarjeta de la portada.
+  accion: Abrir
+actualizado: 2026-01-01
+borrador: true
+cta:
+  canal: { label: Canal de difusión, title: CAMBIA, body: CAMBIA, button: Unirme al canal }
+  perfil: { label: CAMBIA, title: CAMBIA, body: CAMBIA, button: Ir a mi perfil }
+---
+import Btn from "../../components/Btn.astro";
+import CopyButton from "../../components/CopyButton.astro";
+import Section from "../../components/guia/Section.astro";
+{/* Un prompt largo va en su propio archivo .txt para copiarlo idéntico: */}
+{/* import prompt from "./CAMBIA.prompt.txt?raw"; */}
+
+<div class="cover-action">
+  <Btn href="https://CAMBIA" meta="CAMBIA">CAMBIA acción principal</Btn>
+</div>
+
+<Section id="s1" label="CAMBIA" title="CAMBIA">
+  CAMBIA el contenido. Se escribe en Markdown.
+</Section>

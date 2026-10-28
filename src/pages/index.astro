@@ -1,0 +1,84 @@
+---
+/* Portada del sitio. Se arma sola con las guías y los recursos publicados. */
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+import Footer from "../components/Footer.astro";
+import { SITE } from "../site";
+import { sinMarcas } from "../lib/texto";
+
+const base = import.meta.env.BASE_URL;
+const publicado = ({ data }: { data: { borrador: boolean } }) => !data.borrador;
+
+const guias = (await getCollection("guias", publicado)).sort((a, b) => b.data.episodio - a.data.episodio);
+const recursos = (await getCollection("recursos", publicado)).sort((a, b) => +b.data.actualizado - +a.data.actualizado);
+const siguiente = Math.max(0, ...guias.map((g) => g.data.episodio)) + 1;
+const pad = (n: number) => String(n).padStart(2, "0");
+---
+<Base
+  title={`${SITE.autor} · ${SITE.usuario}`}
+  description={`Guías y recursos de ${SITE.usuario}: la serie «5 cosas» y extras para usar hoy.`}
+  ogTitle={SITE.autor}
+  ogDescription="Guías y recursos para empezar sin perderte. La serie «5 cosas» y extras para usar hoy."
+  ogType="website"
+>
+  <main class="wrap">
+    <header class="hub-cover">
+      <p class="kicker">Guías y recursos de <b>{SITE.usuario}</b></p>
+      <h1 class="display">Lo que sí me <span class="hl">funcionó</span></h1>
+      <p class="lede" style="margin-top:1.25rem">Lo que comparto en mis videos, en un solo lugar: guías para empezar algo sin perderte y recursos para usar hoy.</p>
+    </header>
+
+    <section class="hub-section hub-section--first" aria-labelledby="serie-title">
+    <p class="label">La serie</p>
+    <h2 class="h2" id="serie-title">5 <span class="hl">cosas</span></h2>
+    <p class="muted small" style="margin-top:.6rem">Una serie para explorar de cinco en cinco. Cada video tiene su guía: cinco cosas, sin relleno, y por dónde empezar cada una.</p>
+    <ol class="episodes" reversed>
+      {guias.map((g) => (
+        <li>
+          <a class={`episode t-${g.data.portada.color} reveal`} href={`${base}${g.id}/`}>
+            <span class="sticker">Episodio {pad(g.data.episodio)}</span>
+            <span class="cutout" aria-hidden="true">{g.data.portada.emoji}</span>
+            <h2 class="h2">{sinMarcas(g.data.titulo)}</h2>
+            <p class="episode__sub">{g.data.portada.resumen}</p>
+            <span class="episode__foot">
+              <span class="episode__go">{g.data.portada.accion} <span aria-hidden="true">→</span></span>
+              <span class="episode__progress" data-progress-of={g.data.guide} data-total={g.data.temas.length}></span>
+            </span>
+          </a>
+        </li>
+      ))}
+      <li>
+        <div class="episode episode--soon reveal" aria-label="Próximo episodio">
+          <span class="sticker">Episodio {pad(siguiente)}</span>
+          <h2 class="h2">Próximamente</h2>
+          <p class="episode__sub">La siguiente guía sale con el próximo video.</p>
+        </div>
+      </li>
+    </ol>
+    </section>
+
+    {recursos.length > 0 && (
+      <section class="hub-section" aria-labelledby="recursos-title">
+        <p class="label">Fuera de la serie</p>
+        <h2 class="h2" id="recursos-title">Recursos</h2>
+        <ul class="episodes">
+          {recursos.map((r) => (
+            <li>
+              <a class={`episode t-${r.data.portada.color} reveal`} href={`${base}${r.id}/`}>
+                <span class="sticker">{r.data.etiqueta}</span>
+                <span class="cutout" aria-hidden="true">{r.data.portada.emoji}</span>
+                <h2 class="h2">{sinMarcas(r.data.titulo)}</h2>
+                <p class="episode__sub">{r.data.portada.resumen}</p>
+                <span class="episode__foot">
+                  <span class="episode__go">{r.data.portada.accion} <span aria-hidden="true">→</span></span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <Footer />
+  </main>
+</Base>

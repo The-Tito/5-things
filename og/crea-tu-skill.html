@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es" data-theme="light"><head><meta charset="utf-8">
+<!-- Fuente de la imagen para compartir. `npm run og` la captura a 1200×630 → public/assets/og/crea-tu-skill.png -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..700,0..100;1,9..144,400..600,0..100&family=IBM+Plex+Mono:wght@500;600&family=Inter:opsz,wght@14..32,400..700&display=swap">
+<link rel="stylesheet" href="../src/styles/base.css">
+<style>
+  html,body{margin:0;width:1200px;height:630px;overflow:hidden}
+  body{background-size:32px 32px;padding:0}
+  .og{position:relative;width:1200px;height:630px;padding:58px 80px;box-sizing:border-box}
+  .og .kicker{font-size:22px;margin-bottom:26px}
+  .og .display{font-size:124px;line-height:.92}
+  .og .lede{font-size:30px;max-width:15ch;margin-top:28px;color:var(--ink-2)}
+  .og .by{position:absolute;left:80px;bottom:48px;font-family:var(--f-mono);font-size:22px;font-weight:600;letter-spacing:.04em}
+  .hl::before{animation:none!important}
+  .doc{position:absolute;right:86px;top:92px;width:400px;height:446px;padding:30px 32px;box-sizing:border-box;border-radius:24px;background:var(--card);box-shadow:0 24px 50px -20px rgba(22,22,24,.35),inset 0 0 0 1.5px var(--line);rotate:3deg}
+  .doc__name{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:22px;font-weight:600;letter-spacing:.04em;margin-bottom:26px}
+  .doc__name::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--lila-ink)}
+  .doc i{display:block;height:13px;border-radius:99px;background:color-mix(in srgb,var(--ink) 10%,transparent);margin-top:16px}
+  .doc i.l{background:var(--lila)}
+  .doc .gap{margin-top:30px}
+  .bubble{position:absolute;right:300px;top:420px;max-width:330px;padding:20px 24px;border-radius:24px 24px 24px 6px;background:var(--lila);color:#161618;font-family:var(--f-text);font-weight:600;font-size:25px;line-height:1.25;box-shadow:0 18px 40px -16px rgba(22,22,24,.35);rotate:-3deg}
+</style></head>
+<body>
+<div class="og">
+  <p class="kicker">Recursos <b>Prompt</b></p>
+  <h1 class="display">Crea tu<br><span class="hl">skill</span></h1>
+  <p class="lede">Un prompt que te entrevista y la crea contigo.</p>
+  <p class="by">@_antonio.selvas</p>
+  <div class="doc" aria-hidden="true">
+    <span class="doc__name">SKILL.md</span>
+    <i class="l" style="width:46%"></i><i class="l" style="width:80%"></i>
+    <i class="gap" style="width:92%"></i><i style="width:74%"></i><i style="width:85%"></i>
+    <i class="gap" style="width:60%"></i><i style="width:88%"></i><i style="width:52%"></i>
+  </div>
+  <p class="bubble">¿Qué le pides seguido a la IA?</p>
+</div>
+</body></html>

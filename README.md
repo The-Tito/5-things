@@ -1,31 +1,54 @@
-# 5 cosas
+# 5 cosas · guías y recursos
 
-Sitio de las guías de la serie «5 cosas…». HTML, CSS y JS sin frameworks ni build, publicado en GitHub Pages.
+Sitio de las guías de la serie «5 cosas…» y de los recursos extra que comparto (prompts, plantillas). Hecho con [Astro](https://astro.build): el contenido se escribe en archivos `.mdx` y el sitio se genera como HTML estático, sin JS de framework, publicado en GitHub Pages.
 
 ```
-index.html                    portada de la serie (lista de guías)
-antes-de-la-carrera/          guía 1 · link del DM
-_plantilla/                   esqueleto para la siguiente guía (GitHub Pages no lo publica)
-assets/base.css               diseño compartido
-assets/app.js                 casillas, contador, copiar, compartir, medición
-assets/config.js              ← GoatCounter, canal de difusión, perfil
-assets/og/                    imágenes para la vista previa al compartir
+src/
+  site.ts                     ← nombre, GoatCounter, canal de difusión, perfil
+  content/
+    guias/                    episodios de «5 cosas» (un .mdx por guía)
+      antes-de-la-carrera.mdx episodio 01 · link del DM
+    recursos/                 extras fuera de la serie
+      crea-tu-skill.mdx       prompt para crear una skill (CTA «SKILL»)
+      crea-tu-skill.prompt.txt  el texto exacto que se copia
+    */_plantilla.mdx          esqueletos (el «_» hace que no se publiquen)
+  content.config.ts           qué campos lleva cada guía y cada recurso (se validan al compilar)
+  components/                 piezas: botones, tarjeta, bloques, bloque final, pie
+  layouts/                    Base (head y vista previa), Guia, Recurso
+  pages/                      portada y la ruta que publica cada .mdx
+  styles/base.css             diseño compartido
+  scripts/app.js              casillas, contador, copiar, compartir, medición
+og/                           plantillas de las imágenes para compartir
+public/assets/og/             las imágenes ya capturadas
+```
+
+Cada `.mdx` de `guias/` o `recursos/` se publica en `/5-things/<nombre-del-archivo>/` y aparece solo en la portada. Las URLs ya compartidas no cambian.
+
+## Trabajar en local
+
+```bash
+npm install        # la primera vez
+npm run dev        # http://localhost:4321/5-things/ con recarga al guardar
+npm run build      # genera dist/ (falla si a un .mdx le falta un campo)
+npm run og         # captura las imágenes de og/*.html (necesita Google Chrome)
 ```
 
 ## Configuración
 
-Todo está en `assets/config.js`:
+Todo está en `src/site.ts`:
 
 - `goatcounter`: `antonio-selvas` → panel en [antonio-selvas.goatcounter.com](https://antonio-selvas.goatcounter.com).
-- `canal`: link del canal de difusión. Mientras esté vacío, el bloque final muestra «Sígueme para la siguiente parte».
+- `canal`: link del canal de difusión. Mientras esté vacío, el bloque final muestra la variante «perfil».
 - `perfil`: tu perfil de Instagram.
 
 ## Publicación (GitHub Pages)
 
 - Repo: [The-Tito/5-things](https://github.com/The-Tito/5-things)
-- En el repo: **Settings → Pages → Source: Deploy from a branch → `main` / `(root)` → Save**.
+- En el repo: **Settings → Pages → Source: GitHub Actions**. El flujo `.github/workflows/deploy.yml` compila y publica cada vez que algo llega a `main`.
 - Sitio: `https://the-tito.github.io/5-things/`
-- **Link para el DM**: `https://the-tito.github.io/5-things/antes-de-la-carrera/?ref=reel-antes`
+- **Links para el DM**:
+  - Antes de la carrera: `https://the-tito.github.io/5-things/antes-de-la-carrera/?ref=reel-antes`
+  - Crea tu skill: `https://the-tito.github.io/5-things/crea-tu-skill/?ref=dm-skill`
 - Revisa la vista previa en el [depurador de Meta](https://developers.facebook.com/tools/debug/) y abre el link desde Instagram en tu celular, no solo desde Chrome.
 
 ## Ramas (Git Flow)
@@ -34,7 +57,7 @@ Todo está en `assets/config.js`:
 | --- | --- |
 | `main` | Lo publicado. Cada merge lleva tag (`v1.0.0`, `v1.1.0`…). GitHub Pages sale de aquí. |
 | `develop` | Integración. Aquí se juntan las features antes de publicar. |
-| `feature/<nombre>` | Una guía nueva o un cambio de diseño. Sale de `develop` y vuelve a `develop`. |
+| `feature/<nombre>` | Una guía, un recurso o un cambio de diseño. Sale de `develop` y vuelve a `develop`. |
 | `release/<versión>` | Ajustes finales antes de publicar. Sale de `develop`, se fusiona en `main` y en `develop`. |
 | `hotfix/<versión>` | Un arreglo urgente en lo publicado. Sale de `main`, se fusiona en `main` y en `develop`. |
 
@@ -52,22 +75,27 @@ git checkout develop && git merge --no-ff release/1.1.0
 git push origin main develop --tags
 ```
 
-Versiones: una guía nueva sube el número de en medio (`1.1.0`); un arreglo sube el último (`1.0.1`).
+Versiones: una guía o un recurso nuevo sube el número de en medio (`1.1.0`); un arreglo sube el último (`1.0.1`).
 
-## Agregar una guía nueva
+## Agregar una guía o un recurso
 
-1. Copia `_plantilla/` a una carpeta nueva, por ejemplo `herramientas-ia/`.
-2. En su `index.html`, cambia `data-guide="CAMBIA-id"` por un id único y corto, por ejemplo `ia`. Ese id separa el progreso guardado y las métricas de esta guía de las demás.
-3. Reemplaza cada `CAMBIA`, duplica la tarjeta hasta tener 5 y quita `<meta name="robots" content="noindex">`.
-4. Agrega un bloque `<li>` en `index.html` (portada de la serie), arriba de los demás, con `data-progress-of` igual al nuevo `data-guide`.
-5. Imagen para compartir: copia `assets/og/og-antes-de-la-carrera.html`, cámbiale el texto, ábrela en una ventana de 1200×630 y guarda la captura como `assets/og/<carpeta>.png`.
-6. Publícala siguiendo el flujo de ramas de arriba. Las guías anteriores no se tocan.
+1. Copia `src/content/guias/_plantilla.mdx` (o `recursos/_plantilla.mdx`) con el nombre que quieras en la URL, por ejemplo `herramientas-ia.mdx`.
+2. Reemplaza cada `CAMBIA`. El campo `guide` es un id único y corto (`ia`): separa el progreso guardado y las métricas de las demás páginas. No lo cambies después de publicar.
+3. Imagen para compartir: copia `og/antes-de-la-carrera.html` como `og/<nombre>.html`, cámbiale el texto y corre `npm run og <nombre>`.
+4. Quita `borrador: true` cuando esté lista. La portada la agrega sola.
+5. Publícala siguiendo el flujo de ramas de arriba.
 
-**Regla para no romper nada:** no cambies los nombres de clases ni de atributos `data-*` en `base.css` y `app.js` si una guía ya publicada los usa. Si necesitas una pieza nueva, agrégala como clase nueva.
+El contenido se escribe en Markdown dentro del `.mdx` (negritas, `código`, párrafos) y las piezas especiales son componentes: `<Card>`, `<Why>`, `<Start>`, `<Step>`, `<Ignore>`, `<Pills>`, `<Glossary>`, `<Prompt>`, `<Weeks>`, `<Tools>`, `<Btn>`, `<CopyButton>`, `<ShareButton>`. En los títulos, `*palabra*` lleva el resaltado de marcador.
+
+**Para no romper nada:** el progreso guardado y las métricas dependen de `guide` y de los atributos `data-*` que `app.js` lee (`data-step`, `data-copy`, `data-track`…). Si cambias un componente, revisa que las páginas publicadas sigan generando los mismos atributos.
+
+## Copiar textos largos
+
+`data-copy="id"` copia el texto del elemento `#id` en una sola línea (sirve para prompts cortos). Para un prompt con pasos, agrega `data-copy-raw`: conserva los saltos de línea, también en la vía de respaldo del navegador de Instagram. En los componentes es `<Btn copy="id" copyRaw>` y `<CopyButton target="id" raw />`. Guarda el texto en un `.txt` junto al `.mdx` e impórtalo con `?raw`, así lo que se ve y lo que se copia salen del mismo archivo.
 
 ## Medición
 
-Eventos que se registran en GoatCounter, con el id de cada guía como prefijo:
+Eventos que se registran en GoatCounter, con el `guide` de cada página como prefijo:
 
 | Evento | Cuándo |
 | --- | --- |
@@ -76,5 +104,8 @@ Eventos que se registran en GoatCounter, con el id de cada guía como prefijo:
 | `antes/copiar-prompt-1` … `3` | prompt copiado |
 | `antes/compartir-01` … | «Mándatelo a tu compu» |
 | `antes/canal` · `antes/perfil` | clic en el bloque final |
+| `skill/copiar` · `skill/copiar-abajo` | prompt copiado (botón de arriba / de abajo) |
+| `skill/compartir` | «Mándatelo a tu compu» |
+| `skill/canal` · `skill/perfil` | clic en el bloque final |
 
-Las visitas que llegan con `?ref=reel-antes` aparecen en **Top referrers** como `reel-antes`. Para filtrar solo esta serie en el panel, escribe `antes/` o `5-things` en «Filter paths». A los 7 días, anota: comentarios ANTES → visitas con ese ref → clics al canal.
+Las visitas que llegan con `?ref=reel-antes` o `?ref=dm-skill` aparecen en **Top referrers** con ese nombre. Para filtrar una página en el panel, escribe su prefijo (`antes/`, `skill/`) o `5-things` en «Filter paths». A los 7 días, anota: comentarios ANTES → visitas con ese ref → clics al canal.

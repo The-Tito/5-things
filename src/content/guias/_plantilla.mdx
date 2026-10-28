@@ -1,0 +1,59 @@
+---
+# PLANTILLA · episodio nuevo de «5 cosas»
+# 1. Copia este archivo como guias/<carpeta>.mdx (ej. herramientas-ia.mdx). El nombre es la URL.
+# 2. Reemplaza cada CAMBIA. `guide` debe ser único y corto (ej. ia): separa progreso y métricas.
+# 3. Duplica la tarjeta hasta tener 5 (n del 1 al 5, colores en el mismo orden que `temas`).
+# 4. Crea og/<carpeta>.html (copia og/antes-de-la-carrera.html) y corre `npm run og <carpeta>`.
+# La portada del sitio la agrega sola. Con `borrador: true` se publica con noindex y no sale en la portada.
+guide: CAMBIA
+episodio: 2
+titulo: CAMBIA título con *resaltado*
+lede: CAMBIA una o dos líneas.
+descripcion: CAMBIA una línea para buscadores.
+og:
+  imagen: assets/og/CAMBIA.png
+portada:
+  emoji: 🧰
+  color: amarillo
+  resumen: CAMBIA lo que aparece en la tarjeta de la portada.
+  accion: Abrir la guía
+actualizado: 2026-01-01
+borrador: true
+nota:
+  - No tienes que hacer todo hoy.
+  - Elige una. Haz el primer paso y márcalo.
+  - Lo demás puede esperar.
+temas:
+  - { corto: CAMBIA, color: rosa }
+  - { corto: CAMBIA, color: amarillo }
+  - { corto: CAMBIA, color: azul }
+  - { corto: CAMBIA, color: verde }
+  - { corto: CAMBIA, color: lila }
+cta:
+  canal: { label: Canal de difusión, title: ¿Y después qué?, body: CAMBIA, button: Unirme al canal }
+  perfil: { label: Esto sigue, title: ¿Y después qué?, body: CAMBIA, button: Sígueme para la siguiente parte }
+---
+import Card from "../../components/guia/Card.astro";
+import Why from "../../components/guia/Why.astro";
+import Start from "../../components/guia/Start.astro";
+import Step from "../../components/guia/Step.astro";
+import Ignore from "../../components/guia/Ignore.astro";
+{/* Piezas opcionales: Pills, Glossary, Prompt, Weeks, Section (components/guia) y Tools (components). */}
+
+<div class="cards">
+
+<Card n={1} color="rosa" emoji="🧰" title="CAMBIA">
+  <Why>
+    CAMBIA por qué importa. Se escribe en Markdown: **negritas**, `código`.
+  </Why>
+
+  <Start href="https://CAMBIA" title="CAMBIA nombre del recurso" meta="CAMBIA fuente · idioma" track="empieza-01">CAMBIA qué vas a encontrar.</Start>
+
+  <Step n={1} where="💻 en compu" share>
+    CAMBIA el primer paso.
+  </Step>
+
+  <Ignore items={["CAMBIA", "CAMBIA"]} />
+</Card>
+
+</div>

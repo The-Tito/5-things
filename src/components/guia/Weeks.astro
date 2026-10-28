@@ -1,0 +1,19 @@
+---
+/* Plan por semanas. Cada tema es [texto, color, ancla]. */
+interface Week { temas: [string, string, string][]; why: string }
+interface Props { items: Week[] }
+const { items } = Astro.props;
+---
+<ol class="weeks">
+  {items.map((w, i) => (
+    <li class="week">
+      <div class="week__n">Sem<strong>{i + 1}</strong></div>
+      <div class="week__body">
+        <p class="week__what">
+          {w.temas.map(([t, color, href], j) => <>{j > 0 && " + "}<a href={href} class={`t-${color}`}>{t}</a></>)}
+        </p>
+        <p class="week__why">{w.why}</p>
+      </div>
+    </li>
+  ))}
+</ol>

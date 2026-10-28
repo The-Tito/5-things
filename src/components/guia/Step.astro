@@ -1,0 +1,19 @@
+---
+/* «Tu primer paso» con la casilla «Hecho» (n = número del tema). */
+import Icon from "../Icon.astro";
+import ShareButton from "../ShareButton.astro";
+interface Props { n: number; time?: string; where?: string; share?: boolean }
+const { n, time = "20 min", where, share = false } = Astro.props;
+---
+<div class="block step">
+  <p class="label">Tu primer paso <span class="tag">{time}</span> {where && <span class="tag tag--ghost">{where}</span>}</p>
+  <slot />
+  <div class="step__actions">
+    <label class="check">
+      <input type="checkbox" data-step={n}>
+      <span class="check__box" aria-hidden="true"><Icon name="check" /></span>
+      <span class="check__txt"><span class="off">Marcar como hecho</span><span class="on">¡Hecho!</span></span>
+    </label>
+    {share && <ShareButton step={n} />}
+  </div>
+</div>

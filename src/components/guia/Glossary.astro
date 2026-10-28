@@ -1,0 +1,13 @@
+---
+import Icon from "../Icon.astro";
+interface Props { title: string; items: [string, string][] }
+const { title, items } = Astro.props;
+---
+<details class="glossary">
+  <summary>{title}
+    <Icon name="chev" />
+  </summary>
+  <dl>
+    {items.map(([t, d]) => <div><dt>{t}</dt><dd>{d}</dd></div>)}
+  </dl>
+</details>

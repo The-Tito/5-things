@@ -8,3 +8,6 @@ Thumbs.db
 
 # Documentos de trabajo (no se publican)
 Brief*.md
+node_modules/
+dist/
+.astro/
