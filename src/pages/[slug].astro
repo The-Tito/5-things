@@ -1,0 +1,32 @@
+---
+/* Cada guía y cada recurso se publica en /<nombre-del-archivo>/.
+   Las dos colecciones comparten la raíz: un nombre repetido detiene el build. */
+import { getCollection, render } from "astro:content";
+import Guia from "../layouts/Guia.astro";
+import Recurso from "../layouts/Recurso.astro";
+
+export async function getStaticPaths() {
+  const guias = await getCollection("guias");
+  const recursos = await getCollection("recursos");
+  const entries = [...guias, ...recursos];
+
+  const vistos = new Set<string>();
+  for (const e of entries) {
+    if (vistos.has(e.id)) throw new Error(`Dos páginas se llaman «${e.id}». Renombra una.`);
+    vistos.add(e.id);
+  }
+  const ids = new Set<string>();
+  for (const e of entries) {
+    if (ids.has(e.data.guide)) throw new Error(`El id «${e.data.guide}» se repite. Cada página necesita uno propio.`);
+    ids.add(e.data.guide);
+  }
+
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+{entry.collection === "guias"
+  ? <Guia entry={entry}><Content /></Guia>
+  : <Recurso entry={entry}><Content /></Recurso>}

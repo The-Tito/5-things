@@ -1,0 +1,13 @@
+---
+/* Tarjeta de un tema: <Card n={1} color="rosa" emoji="🚨" title="Leer errores"> + bloques */
+interface Props { n: number; color: string; emoji: string; title: string }
+const { n, color, emoji, title } = Astro.props;
+const num = String(n).padStart(2, "0");
+---
+<article class={`card t-${color} reveal`} id={`t${n}`} data-topic={n} aria-labelledby={`t${n}-title`}>
+  <span class="sticker">Cosa {num}</span>
+  <span class="cutout" aria-hidden="true">{emoji}</span>
+  <span class="stamp" aria-hidden="true">HECHO</span>
+  <h2 class="h2 card__title" id={`t${n}-title`}>{title}</h2>
+  <slot />
+</article>

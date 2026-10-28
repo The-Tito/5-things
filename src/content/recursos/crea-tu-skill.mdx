@@ -1,0 +1,70 @@
+---
+guide: skill
+etiqueta: Prompt
+titulo: Crea tu *skill*
+lede: Pega este prompt en tu IA. Te va a hacer preguntas, una por una, y al final te entrega tu skill lista.
+descripcion: Un prompt que te entrevista y crea tu skill contigo. Cópialo y pégalo en tu IA. Por @_antonio.selvas.
+og:
+  descripcion: Un prompt que te entrevista y crea tu skill contigo. Cópialo y pégalo en tu IA.
+  imagen: assets/og/crea-tu-skill.png
+  alt: "Crea tu skill: un prompt que te entrevista y la crea contigo"
+portada:
+  emoji: 🧩
+  color: lila
+  resumen: Un prompt que te entrevista y te entrega tu SKILL.md listo para instalar.
+  accion: Copiar el prompt
+actualizado: 2026-10-27
+cta:
+  canal:
+    label: Canal de difusión
+    title: ¿La hiciste?
+    body: "En mi canal voy compartiendo lo que estoy construyendo con IA, lo que se me rompe y lo que sí me funcionó."
+    button: Unirme al canal
+    meta: Sin spam · tres mensajes a la semana
+  perfil:
+    label: ¿La hiciste?
+    title: Cuéntame qué skill te salió
+    body: "Respóndeme por DM con la tarea que elegiste. Voy subiendo lo que construyo con IA, lo que se me rompe y lo que sí me funcionó."
+    button: Ir a mi perfil
+---
+import Btn from "../../components/Btn.astro";
+import CopyButton from "../../components/CopyButton.astro";
+import ShareButton from "../../components/ShareButton.astro";
+import Tools from "../../components/Tools.astro";
+import Section from "../../components/guia/Section.astro";
+import prompt from "./crea-tu-skill.prompt.txt?raw";
+
+<div class="cover-action">
+  <Btn copy="prompt-skill" copyRaw track="copiar" meta="La entrevista funciona en cualquier IA">Copiar prompt</Btn>
+</div>
+
+<aside class="note" aria-label="Cómo usarlo">
+  <p class="label">Cómo usarlo</p>
+  <ul class="note__lines">
+    <li>1 · Copia el prompt.</li>
+    <li>2 · Pégalo en tu IA.</li>
+    <li>3 · Contesta sus preguntas, una por una.</li>
+  </ul>
+</aside>
+
+<Section id="prompt-title" label="El prompt" title="Lo que vas a pegar">
+  <div class="prompt prompt--full">
+    <pre class="prompt__text prompt__text--full" id="prompt-skill">{prompt.trim()}</pre>
+    <CopyButton target="prompt-skill" raw track="copiar-abajo" />
+  </div>
+  <p class="copy-hint">¿No se copió? Mantén presionado el texto y elige «Seleccionar todo».</p>
+</Section>
+
+<Section id="donde-title" label="Después de la entrevista" title="Dónde vive tu skill" intro="La entrevista funciona en cualquier IA. Instalar la skill depende de la herramienta y de tu plan; el último paso del prompt te guía según tu caso.">
+  <Tools items={[
+    ["Claude", "planes de pago · se sube como .zip"],
+    ["ChatGPT", "según tu plan"],
+    ["Claude Code, Codex, Gemini CLI", "una carpeta en tu compu"],
+    ["Cualquier otra", "pégala en las instrucciones de un proyecto"],
+  ]} />
+  <p class="muted small" style="margin-top:1rem">La entrevista la puedes hacer desde el celular. Instalarla es más fácil en la compu.</p>
+  <div class="step__actions">
+    <ShareButton />
+  </div>
+  <p class="aside-line">Y si instalas una skill que no escribiste tú, léela antes. Si no la entiendes, no la instales.</p>
+</Section>

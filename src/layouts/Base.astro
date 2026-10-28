@@ -1,0 +1,68 @@
+---
+/* Esqueleto de todas las páginas: <head>, vista previa al compartir, fuentes y scripts.
+   - guide: id de la página. Aísla el progreso guardado y prefija los eventos de GoatCounter.
+   - total: casillas «Hecho» de la página (0 si no tiene). */
+import { SITE } from "../site";
+import "../styles/base.css";
+
+interface Props {
+  title: string;
+  description: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;     // ruta dentro de public/, p. ej. "assets/og/crea-tu-skill.png"
+  ogImageAlt?: string;
+  ogType?: "website" | "article";
+  noindex?: boolean;
+  guide?: string;
+  total?: number;
+}
+
+const {
+  title, description, ogTitle = title, ogDescription = description,
+  ogImage = "assets/og/antes-de-la-carrera.png", ogImageAlt,
+  ogType = "article", noindex = false, guide, total = 0,
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const image = new URL(base + ogImage, Astro.site).href;
+const config = { goatcounter: SITE.goatcounter, canal: SITE.canal, perfil: SITE.perfil };
+---
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <meta name="theme-color" content="#F7F6F2" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#131315" media="(prefers-color-scheme: dark)">
+  {noindex && <meta name="robots" content="noindex">}
+
+  <!-- Vista previa al compartir (DM, WhatsApp) -->
+  <link rel="canonical" href={canonical}>
+  <meta property="og:type" content={ogType}>
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:site_name" content={`${SITE.nombre} · ${SITE.usuario}`}>
+  <meta property="og:title" content={ogTitle}>
+  <meta property="og:description" content={ogDescription}>
+  <meta property="og:url" content={canonical}>
+  <meta property="og:image" content={image}>
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  {ogImageAlt && <meta property="og:image:alt" content={ogImageAlt}>}
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%23161618'/><text x='32' y='45' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23D3D2FB'>5</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..700,0..100;1,9..144,400..600,0..100&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:opsz,wght@14..32,400..700&display=swap">
+  <script is:inline>document.documentElement.classList.add("js");</script>
+  <script is:inline define:vars={{ config }}>window.CINCO_COSAS = config;</script>
+</head>
+<body data-guide={guide} data-total={total}>
+  <slot />
+  <script src="../scripts/app.js"></script>
+</body>
+</html>

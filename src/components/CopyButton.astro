@@ -1,0 +1,10 @@
+---
+/* Botón secundario «Copiar prompt» para el texto del elemento #target. */
+import Icon from "./Icon.astro";
+interface Props { target: string; track?: string; raw?: boolean; label?: string }
+const { target, track, raw = false, label = "Copiar prompt" } = Astro.props;
+---
+<button class="btn-ghost" type="button" data-copy={target} data-copy-raw={raw || undefined} data-track={track}>
+  <Icon name="copiar" />
+  <span data-label>{label}</span>
+</button>

@@ -1,0 +1,164 @@
+---
+guide: antes
+episodio: 1
+titulo: Antes de la *carrera*
+lede: 5 cosas que me hubiera gustado aprender antes de entrar, y cómo empezar cada una en 20 minutos.
+descripcion: 5 cosas que me hubiera gustado aprender antes de entrar a la carrera, y cómo empezar cada una en 20 minutos. Por @_antonio.selvas.
+og:
+  descripcion: 5 cosas que me hubiera gustado aprender antes de entrar, y cómo empezar cada una en 20 minutos.
+  imagen: assets/og/antes-de-la-carrera.png
+  alt: "Antes de la carrera: 5 cosas y cómo empezar cada una en 20 minutos"
+portada:
+  emoji: 🎒
+  color: rosa
+  resumen: 5 cosas que me hubiera gustado aprender antes de entrar, y cómo empezar cada una en 20 minutos.
+  accion: Abrir la guía
+actualizado: 2026-10-18
+pie: "Estudiante de Ingeniería en Software. Sin cursos, sin humo: lo que sí me funcionó."
+nota:
+  - No tienes que hacer todo hoy.
+  - Elige una. Haz el primer paso y márcalo.
+  - Lo demás puede esperar.
+temas:
+  - { corto: Leer errores, color: rosa }
+  - { corto: Lógica, color: amarillo }
+  - { corto: Conceptos de la web, color: azul }
+  - { corto: Git, color: verde }
+  - { corto: IA como tutor, color: lila }
+cta:
+  canal:
+    label: Canal de difusión
+    title: ¿Y después qué?
+    body: "En mi canal de difusión voy subiendo lo que me hubiera servido tener cuando empecé: lo que estoy construyendo, lo que se me rompe y por dónde seguir."
+    button: Unirme al canal
+    meta: Sin spam · tres mensajes a la semana
+  perfil:
+    label: Esto sigue
+    title: ¿Y después qué?
+    body: "Voy subiendo lo que me hubiera servido tener cuando empecé: lo que estoy construyendo, lo que se me rompe y por dónde seguir."
+    button: Sígueme para la siguiente parte
+    fine: ¿Te atoraste? Respóndeme por DM.
+---
+import Card from "../../components/guia/Card.astro";
+import Why from "../../components/guia/Why.astro";
+import Start from "../../components/guia/Start.astro";
+import Step from "../../components/guia/Step.astro";
+import Ignore from "../../components/guia/Ignore.astro";
+import Pills from "../../components/guia/Pills.astro";
+import Glossary from "../../components/guia/Glossary.astro";
+import Prompt from "../../components/guia/Prompt.astro";
+import Weeks from "../../components/guia/Weeks.astro";
+import Section from "../../components/guia/Section.astro";
+import Tools from "../../components/Tools.astro";
+import MapaWeb from "./antes-de-la-carrera/MapaWeb.astro";
+
+<div class="cards">
+
+<Card n={1} color="rosa" emoji="🚨" title="Leer errores">
+  <Why>
+    Al principio veía un mensaje rojo y sentía que había roto todo. Tardé en entender que el error no te regaña: te dice qué pasó y en qué línea.
+
+    <Pills label="Ante cualquier error, responde" items={["¿Qué tipo es?", "¿Qué dice?", "¿En qué línea?"]} />
+    <p class="muted small">Si no lo entiendes, copia el mensaje exacto y búscalo.</p>
+  </Why>
+
+  <Start href="https://developer.mozilla.org/es/docs/Learn_web_development/Core/Scripting/What_went_wrong" title="¿Qué ha salido mal? Corrigiendo JavaScript" meta="MDN · en español" track="empieza-01">Explica los errores de sintaxis y los de lógica con un juego roto que vas arreglando.</Start>
+
+  <Step n={1} where="💻 en compu" share>
+    Abre cualquier página, clic derecho → **Inspeccionar** → **Consola**. Escribe `console.log(hola)` sin comillas y presiona Enter. Lee el error con las tres preguntas. Después arréglalo poniendo `"hola"` entre comillas.
+  </Step>
+
+  <Ignore items={["Depuradores con breakpoints", "Memorizar tipos de error", "Herramientas de monitoreo"]} />
+</Card>
+
+<Card n={2} color="amarillo" emoji="🧠" title="Lógica">
+  <Why>
+    Lo que más me costó al entrar no fue el lenguaje, fue saber qué pasos seguir. El lenguaje se aprende; pensar en pasos se practica.
+  </Why>
+
+  <Start href="https://cs50.harvard.edu/x/2026/" title="CS50x 2026 de Harvard · Semana 0" meta="Gratis · clases dobladas al español" track="empieza-02">La Semana 0 usa Scratch: bloques visuales, sin escribir código. Solo lógica.</Start>
+
+  <Step n={2} where="✏️ papel y lápiz">
+    Escribe los pasos para decidir si un número es **par o impar**. Luego, los pasos para encontrar **el mayor de tres números**. Revísalos con una pregunta: ¿los podría seguir alguien que no piensa, sin adivinar nada?
+  </Step>
+
+  <Ignore items={["Elegir «el mejor lenguaje»", "Matemáticas avanzadas", "Ejercicios tipo LeetCode"]} />
+</Card>
+
+<Card n={3} color="azul" emoji="🌐" title="Conceptos de la web">
+  <Why>
+    Me hablaban de API, servidor y base de datos y yo asentía. No me faltaban definiciones, me faltaba el mapa de cómo se conectan.
+
+    <MapaWeb />
+
+    <Glossary title="Mini glosario · 7 palabras" items={[
+      ["Cliente", "El que pide: tu navegador o la app de tu celular."],
+      ["Servidor", "La computadora que responde esos pedidos."],
+      ["Frontend", "La parte que ves y tocas."],
+      ["Backend", "La parte que no ves: reglas, cálculos, permisos."],
+      ["API", "La puerta por la que el frontend le pide cosas al backend."],
+      ["Base de datos", "Donde se guarda la información de forma ordenada."],
+      ["HTTP", "El idioma en que se hablan cliente y servidor."],
+    ]} />
+  </Why>
+
+  <Start href="https://developer.mozilla.org/es/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works" title="Cómo funciona la web" meta="MDN · en español" track="empieza-03">Cliente, servidor, DNS y qué pasa cuando cargas una página.</Start>
+
+  <Step n={3} where="💻 en compu" share>
+    Abre cualquier página, **Inspeccionar** → pestaña **Red** (Network) y recarga. Cada línea que aparece es tu navegador pidiéndole algo a un servidor. Busca una con código `200` (todo bien) y, si encuentras, una `404` (no existe).
+
+    Luego explica con tus palabras qué pasa al abrir Instagram usando las 4 cajas del mapa.
+  </Step>
+
+  <Ignore items={["Frameworks (React, Angular)", "La nube", "Microservicios", "Elegir qué base de datos usar"]} />
+</Card>
+
+<Card n={4} color="verde" emoji="🌱" title="Git">
+  <Why>
+    Antes mis proyectos se llamaban `final_v3_ahora_si.zip`. Git es el historial de tu proyecto: puedes volver atrás y trabajar en equipo sin pisarte. En la carrera lo vas a usar desde los primeros proyectos.
+  </Why>
+
+  <Start href="https://learngitbranching.js.org/?locale=es_MX" title="Learn Git Branching" meta="Interactivo · sin instalar nada" track="empieza-04">En el navegador: escribes comandos y ves el árbol de tu proyecto cambiar en vivo.</Start>
+
+  <Step n={4} where="💻 mejor en compu" share>
+    Completa el primer nivel, **Introducción a los commits**. Después crea tu cuenta en GitHub; ahí va a vivir tu portafolio.
+  </Step>
+
+  <Ignore items={["Rebase", "Cherry-pick", "Git Flow", "Memorizar comandos"]} />
+</Card>
+
+<Card n={5} color="lila" emoji="🤖" title="IA como tutor">
+  <Why>
+    La IA te puede dar el código en dos segundos y dejarte igual de perdido. Lo que a mí me sirvió fue pedirle que me explique, no que me resuelva.
+  </Why>
+
+  <Start>
+    El modo de estudio de la IA que ya uses. Te hace preguntas en lugar de darte la respuesta.
+
+    <Tools items={[["ChatGPT", "modo estudio"], ["Claude", "modo de aprendizaje"], ["Gemini", "aprendizaje guiado"]]} />
+
+    <div class="prompts">
+      <Prompt n={1} title="Para entender algo nuevo" id="prompt-1" track="copiar-prompt-1">Estoy aprendiendo a programar desde cero. Explícame <span class="slot">[tema]</span> como si fuera mi primer día, con un ejemplo de la vida diaria. Al final hazme una pregunta para comprobar que entendí.</Prompt>
+      <Prompt n={2} title="Para destrabarte con un error" id="prompt-2" track="copiar-prompt-2">Tengo este error: <span class="slot">[pega el error y tu código]</span>. No me des el código corregido. Hazme preguntas que me ayuden a encontrar el problema yo solo.</Prompt>
+      <Prompt n={3} title="Para comprobar que sí entendiste" id="prompt-3" track="copiar-prompt-3">Te voy a explicar con mis palabras qué es <span class="slot">[tema]</span>. Dime qué entendí bien, qué entendí mal y qué me falta.</Prompt>
+    </div>
+  </Start>
+
+  <Step n={5} where="📱 desde el celular">
+    Usa el **prompt 3** con algo de esta misma guía, por ejemplo qué es una API. Si te corrige algo, ya aprendiste más que leyendo.
+  </Step>
+
+  <Ignore items={["Agentes", "Automatizaciones", "Generar apps completas con IA", "Pagar planes"]} />
+</Card>
+
+</div>
+
+<Section id="mes-title" label="El orden para aprender" title="Si solo tienes un mes" intro="El video va en orden de gancho; esto va en orden de qué necesitas primero.">
+  <Weeks items={[
+    { temas: [["Lógica", "amarillo", "#t2"]], why: "Es la base de todo lo demás." },
+    { temas: [["Leer errores", "rosa", "#t1"], ["IA como tutor", "lila", "#t5"]], why: "Desde que escribes código te vas a equivocar; aprende a destrabarte solo." },
+    { temas: [["Conceptos de la web", "azul", "#t3"]], why: "Ya puedes entender cómo encaja lo que escribes." },
+    { temas: [["Git", "verde", "#t4"]], why: "Para guardar lo que ya construiste." },
+  ]} />
+  <p class="aside-line">Si te atoras en una, no pasa nada. Brinca a la siguiente y regresa después.</p>
+</Section>

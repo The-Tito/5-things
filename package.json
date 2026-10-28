@@ -1,0 +1,15 @@
+{
+  "name": "5-things",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "og": "node scripts/og.mjs"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^8.1.1",
+    "astro": "^7.4.2"
+  }
+}

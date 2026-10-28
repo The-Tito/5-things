@@ -1,0 +1,8 @@
+---
+/* Lista simple: nombre a la izquierda, detalle a la derecha. */
+interface Props { items: [string, string][] }
+const { items } = Astro.props;
+---
+<ul class="tools">
+  {items.map(([name, detail]) => <li><b>{name}</b><span>{detail}</span></li>)}
+</ul>

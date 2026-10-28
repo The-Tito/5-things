@@ -1,0 +1,25 @@
+---
+/* Botón grande: link externo, o botón de copiar si recibe `copy`.
+   copyRaw conserva los saltos de línea al copiar. */
+import Icon from "./Icon.astro";
+interface Props {
+  href?: string;
+  meta?: string;
+  track?: string;
+  copy?: string;
+  copyRaw?: boolean;
+  [key: string]: unknown;
+}
+const { href, meta, track, copy, copyRaw = false, ...rest } = Astro.props;
+---
+{copy ? (
+  <button class="btn" type="button" data-copy={copy} data-copy-raw={copyRaw || undefined} data-track={track} {...rest}>
+    <span><span data-label><slot /></span>{meta && <span class="btn__meta">{meta}</span>}</span>
+    <span class="btn__arrow" aria-hidden="true"><Icon name="copiar" /></span>
+  </button>
+) : (
+  <a class="btn" href={href} target="_blank" rel="noopener" data-track={track} {...rest}>
+    <span><slot />{meta && <span class="btn__meta">{meta}</span>}</span>
+    <span class="btn__arrow" aria-hidden="true"><Icon name="flecha" /></span>
+  </a>
+)}

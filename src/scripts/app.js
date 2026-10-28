@@ -5,8 +5,10 @@
      <input type="checkbox" data-step="1">       casilla «Hecho» del tema 1
      [data-count]                                se reemplaza por los temas hechos
      [data-dot="1"]  /  [data-bar="1"]           indicadores del tema 1
-     [data-copy="id"]                            copia el texto del elemento #id
+     [data-copy="id"]                            copia el texto del elemento #id en una sola línea
+     [data-copy="id" data-copy-raw]              … respetando los saltos de línea (prompts con pasos)
      [data-share="1"]                            compartir el link al tema 1
+     [data-share=""]                             compartir el link a la página
      [data-track="nombre"]                       cuenta un clic en GoatCounter
      [data-progress-of="antes" data-total="5"]   (portada de serie) progreso guardado
      [data-cta="canal" | "perfil"]               bloque final según haya canal o no
@@ -161,7 +163,9 @@
     btn.addEventListener("click", function () {
       var src = document.getElementById(btn.dataset.copy);
       if (!src) return;
-      var text = src.textContent.replace(/\s+/g, " ").trim();
+      var text = btn.hasAttribute("data-copy-raw")
+        ? src.textContent.replace(/\r/g, "").replace(/[ \t]+\n/g, "\n").trim()
+        : src.textContent.replace(/\s+/g, " ").trim();
       copyText(text).then(function () { flash(btn, "¡Copiado!"); },
                           function () { flash(btn, "Mantén presionado el texto para copiar"); });
     });
@@ -171,9 +175,9 @@
   document.querySelectorAll("[data-share]").forEach(function (btn) {
     btn.addEventListener("click", function () {
       var n = btn.dataset.share;
-      var url = location.origin + location.pathname + "#t" + n;
+      var url = location.origin + location.pathname + (n ? "#t" + n : "");
       var title = document.title;
-      track("compartir-" + pad(n));
+      track(n ? "compartir-" + pad(n) : "compartir");
       if (navigator.share) {
         navigator.share({ title: title, text: "Para hacerlo en la compu: " + title, url: url }).catch(function () {});
       } else {
