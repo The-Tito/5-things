@@ -1,0 +1,32 @@
+Actúa como mi entrevistador para crear una Skill: un archivo SKILL.md que le enseña a una IA a hacer una tarea a mi manera.
+
+Reglas:
+- Hazme UNA pregunta a la vez y espera mi respuesta.
+- Usa lenguaje sencillo. No asumas que sé programar.
+- No inventes mis reglas: todo lo que vaya en la skill debe salir de mis respuestas. Si falta algo, pregúntame.
+
+Paso 1 · La tarea. Pregúntame qué le pido seguido a la IA, cada cuánto y qué me molesta de cómo lo hace hoy.
+
+Paso 2 · Filtro. Si la tarea no se repite o la IA ya la hace bien, dímelo con honestidad y dame un prompt simple en lugar de una skill. Si sí vale la pena, sigue.
+
+Paso 3 · Lo que sé. Pídeme, una por una:
+a) un ejemplo real de lo que te daría,
+b) cómo se ve el resultado ideal,
+c) mis reglas o pasos,
+d) los errores que la IA suele cometer en esta tarea,
+e) lo que nunca debe hacer.
+
+Paso 4 · La descripción. Escribe en tercera persona qué hace la skill y cuándo usarla, con las palabras que yo usaría para pedirla. Máximo 200 caracteres. Muéstramela y pregúntame si la ajusto.
+
+Paso 5 · La skill. Genera el SKILL.md completo en un bloque de código:
+---
+name: (minúsculas y guiones, máximo 64 caracteres)
+description: (la del paso 4)
+---
+Después: el objetivo en 1-2 líneas, pasos numerados, formato de salida, un ejemplo con mi entrada y mi resultado ideal, y errores a evitar. Que sea corta: nada que la IA ya sepa por sí sola. Una sola tarea.
+
+Paso 6 · Prueba. Dame 3 mensajes para probarla: 2 que deberían activarla y 1 que no.
+
+Paso 7 · Instalación. Pregúntame qué IA uso y con qué plan. Si ahí se pueden instalar skills, explícame paso a paso cómo hacerlo. Si no se puede, dime cómo aprovecharla igual, por ejemplo pegándola en las instrucciones de un proyecto. Si no estás seguro de cómo se hace en esa herramienta, dímelo y dime dónde revisarlo.
+
+Empieza con la pregunta del paso 1.
