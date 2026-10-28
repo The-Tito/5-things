@@ -1,0 +1,10 @@
+---
+/* «Mándatelo a tu compu». Con `step` comparte el link a esa tarjeta; sin él, a la página. */
+import Icon from "./Icon.astro";
+interface Props { step?: number | string; label?: string }
+const { step = "", label = "Mándatelo a tu compu" } = Astro.props;
+---
+<button class="btn-ghost" type="button" data-share={String(step)}>
+  <Icon name="compartir" />
+  <span data-label>{label}</span>
+</button>

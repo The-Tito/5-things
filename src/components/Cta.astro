@@ -1,0 +1,35 @@
+---
+/* Bloque final. Se muestran las dos variantes en el HTML y app.js deja visible
+   «canal» si hay link en site.ts; si no, «perfil». */
+import Icon from "./Icon.astro";
+import { SITE } from "../site";
+
+interface Variant { label: string; title: string; body: string; button: string; meta?: string; fine?: string; sticker?: string }
+interface Props { canal: Variant; perfil: Variant }
+const { canal, perfil } = Astro.props;
+---
+<div id="cierre">
+  <section class="cta reveal" data-cta="canal" hidden aria-labelledby="cta-canal-title">
+    <span class="cta__sticker" aria-hidden="true">{canal.sticker ?? "📣"}</span>
+    <p class="label">{canal.label}</p>
+    <h2 class="h2" id="cta-canal-title">{canal.title}</h2>
+    <p class="cta__body">{canal.body}</p>
+    <a class="btn" href={SITE.canal || "#"} target="_blank" rel="noopener" data-canal-link data-track="canal">
+      <span>{canal.button}{canal.meta && <span class="btn__meta">{canal.meta}</span>}</span>
+      <span class="btn__arrow" aria-hidden="true"><Icon name="flecha" /></span>
+    </a>
+    {canal.fine && <p class="cta__fine">{canal.fine}</p>}
+  </section>
+
+  <section class="cta reveal" data-cta="perfil" aria-labelledby="cta-perfil-title">
+    <span class="cta__sticker" aria-hidden="true">{perfil.sticker ?? "👋"}</span>
+    <p class="label">{perfil.label}</p>
+    <h2 class="h2" id="cta-perfil-title">{perfil.title}</h2>
+    <p class="cta__body">{perfil.body}</p>
+    <a class="btn" href={SITE.perfil} target="_blank" rel="noopener" data-perfil-link data-track="perfil">
+      <span>{perfil.button}<span class="btn__meta">{perfil.meta ?? `${SITE.usuario} en Instagram`}</span></span>
+      <span class="btn__arrow" aria-hidden="true"><Icon name="flecha" /></span>
+    </a>
+    {perfil.fine && <p class="cta__fine">{perfil.fine}</p>}
+  </section>
+</div>

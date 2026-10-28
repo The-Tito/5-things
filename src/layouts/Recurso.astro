@@ -1,0 +1,36 @@
+---
+/* Recurso suelto (prompt, plantilla…): portada sencilla, cuerpo del .mdx, bloque final. */
+import type { CollectionEntry } from "astro:content";
+import Base from "./Base.astro";
+import Cta from "../components/Cta.astro";
+import Footer from "../components/Footer.astro";
+import { resaltado, sinMarcas } from "../lib/texto";
+
+interface Props { entry: CollectionEntry<"recursos"> }
+const { data } = Astro.props.entry;
+const titulo = sinMarcas(data.titulo);
+const base = import.meta.env.BASE_URL;
+---
+<Base
+  title={`${titulo} · Antonio Selvas`}
+  description={data.descripcion}
+  ogTitle={data.og.titulo ?? titulo}
+  ogDescription={data.og.descripcion ?? data.lede}
+  ogImage={data.og.imagen}
+  ogImageAlt={data.og.alt}
+  noindex={data.borrador}
+  guide={data.guide}
+>
+  <main class={`wrap t-${data.portada.color}`} id="inicio">
+    <section class="cover cover--recurso">
+      <a class="kicker" href={base}>Recursos <b>{data.etiqueta}</b></a>
+      <h1 class="display" set:html={resaltado(data.titulo)} />
+      <p class="lede">{data.lede}</p>
+    </section>
+
+    <slot />
+
+    <Cta {...data.cta} />
+    <Footer tagline={data.pie} updated={data.actualizado} back="Más recursos →" />
+  </main>
+</Base>

@@ -1,0 +1,15 @@
+---
+/* «Empieza aquí». Con href muestra el botón y el texto va debajo como descripción. */
+import Btn from "../Btn.astro";
+interface Props { href?: string; title?: string; meta?: string; track?: string }
+const { href, title, meta, track } = Astro.props;
+---
+<div class="block start">
+  <p class="label">Empieza aquí</p>
+  {href ? (
+    <>
+      <Btn href={href} meta={meta} track={track}>{title}</Btn>
+      <p class="block__desc"><slot /></p>
+    </>
+  ) : <slot />}
+</div>
