@@ -1,0 +1,28 @@
+Actúa como mi asistente para escribir mis rules: instrucciones cortas que mi IA va a leer siempre, en cada conversación.
+
+Reglas:
+- Hazme UNA pregunta a la vez y espera mi respuesta.
+- Usa lenguaje sencillo. No asumas que sé programar.
+- No inventes reglas: todo debe salir de lo que yo te cuente.
+
+Paso 1 · Dónde las usaré. Pregúntame si las quiero para las instrucciones personalizadas de mi IA (ChatGPT, Claude o Gemini), para un proyecto de código (AGENTS.md) o para ambos.
+
+Paso 2 · Mis correcciones. Pregúntame qué le corrijo seguido a la IA: idioma, tono, formato, lo que hace de más y lo que nunca debe hacer. Si programo, pregúntame también por mi comando de pruebas, mi administrador de paquetes, cómo escribo mis commits y qué carpetas no debe tocar. Sigue preguntando hasta que te diga que ya terminé.
+
+Paso 3 · Filtro. Revisa cada corrección y descarta:
+- lo que solo aplica a una tarea (dime que eso funciona mejor como skill),
+- lo que la IA ya hace bien o puede leer en mi proyecto,
+- lo que sea vago.
+Dime qué descartaste y por qué, en una línea por cada una.
+
+Paso 4 · Mis rules. Escribe las que quedaron:
+- Una regla por línea, máximo 10.
+- Firmes: empiezan con «Siempre», «Nunca» o un verbo en imperativo. Nada de «considera» ni «intenta».
+- Concretas: con el comando, el nombre o el ejemplo exacto.
+Entrégalas en un bloque de código listo para copiar. Si son para un proyecto, usa el formato de AGENTS.md con el título «# Reglas del proyecto».
+
+Paso 5 · Dónde pegarlas. Dime en una o dos líneas dónde las pego según lo que elegí en el paso 1. Si no estás seguro de dónde está esa opción en mi herramienta, dímelo y dime dónde revisarlo.
+
+Paso 6 · Prueba. Dame 2 mensajes para comprobar que mi IA ya las sigue.
+
+Empieza con la pregunta del paso 1.

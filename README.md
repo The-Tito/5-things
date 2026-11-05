@@ -11,6 +11,8 @@ src/
     recursos/                 extras fuera de la serie
       crea-tu-skill.mdx       prompt para crear una skill (CTA «SKILL»)
       crea-tu-skill.prompt.txt  el texto exacto que se copia
+      crea-tus-reglas.mdx     prompt para crear reglas (CTA «REGLAS»)
+      crea-tus-reglas.prompt.txt
     */_plantilla.mdx          esqueletos (el «_» hace que no se publiquen)
   content.config.ts           qué campos lleva cada guía y cada recurso (se validan al compilar)
   components/                 piezas: botones, tarjeta, bloques, bloque final, pie
@@ -49,6 +51,7 @@ Todo está en `src/site.ts`:
 - **Links para el DM**:
   - Antes de la carrera: `https://the-tito.github.io/5-things/antes-de-la-carrera/?ref=reel-antes`
   - Crea tu skill: `https://the-tito.github.io/5-things/crea-tu-skill/?ref=dm-skill`
+  - Crea tus reglas: `https://the-tito.github.io/5-things/crea-tus-reglas/?ref=dm-reglas`
 - Revisa la vista previa en el [depurador de Meta](https://developers.facebook.com/tools/debug/) y abre el link desde Instagram en tu celular, no solo desde Chrome.
 
 ## Ramas (Git Flow)
@@ -107,5 +110,8 @@ Eventos que se registran en GoatCounter, con el `guide` de cada página como pre
 | `skill/copiar` · `skill/copiar-abajo` | prompt copiado (botón de arriba / de abajo) |
 | `skill/compartir` | «Mándatelo a tu compu» |
 | `skill/canal` · `skill/perfil` | clic en el bloque final |
+| `reglas/copiar` · `reglas/copiar-abajo` | prompt copiado (botón de arriba / de abajo) |
+| `reglas/compartir` | «Mándatelo a tu compu» |
+| `reglas/canal` · `reglas/perfil` | clic en el bloque final |
 
-Las visitas que llegan con `?ref=reel-antes` o `?ref=dm-skill` aparecen en **Top referrers** con ese nombre. Para filtrar una página en el panel, escribe su prefijo (`antes/`, `skill/`) o `5-things` en «Filter paths». A los 7 días, anota: comentarios ANTES → visitas con ese ref → clics al canal.
+Las visitas que llegan con `?ref=reel-antes`, `?ref=dm-skill` o `?ref=dm-reglas` aparecen en **Top referrers** con ese nombre. Para filtrar una página en el panel, escribe su prefijo (`antes/`, `skill/`, `reglas/`) o `5-things` en «Filter paths». A los 7 días, anota: comentarios ANTES → visitas con ese ref → clics al canal.

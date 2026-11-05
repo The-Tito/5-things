@@ -1,0 +1,68 @@
+---
+guide: reglas
+etiqueta: Prompt
+titulo: Crea tus *reglas*
+lede: Pega este prompt en tu IA. Te pregunta qué le corriges seguido y te entrega tus reglas listas para copiar.
+descripcion: Un prompt que convierte lo que le corriges a tu IA en reglas listas para copiar. Por @_antonio.selvas.
+og:
+  titulo: Crea tus reglas
+  descripcion: Un prompt que convierte lo que le corriges a tu IA en reglas listas para copiar.
+  imagen: assets/og/crea-tus-reglas.png
+  alt: "Crea tus reglas: un prompt que convierte lo que le corriges a tu IA en reglas"
+portada:
+  emoji: 📏
+  color: azul
+  resumen: Un prompt que convierte lo que le corriges a tu IA en reglas listas para pegar.
+  accion: Copiar el prompt
+actualizado: 2026-11-05
+cta:
+  canal:
+    label: Canal de difusión
+    title: ¿Las hiciste?
+    body: "En mi canal voy compartiendo lo que estoy construyendo con IA, lo que se me rompe y lo que sí me funcionó."
+    button: Unirme al canal
+    meta: Sin spam · tres mensajes a la semana
+  perfil:
+    label: ¿Las hiciste?
+    title: Cuéntame qué regla te salvó
+    body: "Respóndeme por DM con la regla que más te sirvió. Voy subiendo lo que construyo con IA, lo que se me rompe y lo que sí me funcionó."
+    button: Ir a mi perfil
+---
+import Btn from "../../components/Btn.astro";
+import CopyButton from "../../components/CopyButton.astro";
+import ShareButton from "../../components/ShareButton.astro";
+import Tools from "../../components/Tools.astro";
+import Section from "../../components/guia/Section.astro";
+import prompt from "./crea-tus-reglas.prompt.txt?raw";
+
+<div class="cover-action">
+  <Btn copy="prompt-reglas" copyRaw track="copiar" meta="Funciona en cualquier IA">Copiar prompt</Btn>
+</div>
+
+<aside class="note" aria-label="Cómo usarlo">
+  <p class="label">Cómo usarlo</p>
+  <ul class="note__lines">
+    <li>1 · Copia el prompt.</li>
+    <li>2 · Pégalo en tu IA.</li>
+    <li>3 · Cuéntale qué le corriges seguido.</li>
+  </ul>
+</aside>
+
+<Section id="prompt-title" label="El prompt" title="Lo que vas a pegar">
+  <div class="prompt prompt--full">
+    <pre class="prompt__text prompt__text--full" id="prompt-reglas">{prompt.trim()}</pre>
+    <CopyButton target="prompt-reglas" raw track="copiar-abajo" />
+  </div>
+  <p class="copy-hint">¿No se copió? Mantén presionado el texto y elige «Seleccionar todo».</p>
+</Section>
+
+<Section id="donde-title" label="Después de la entrevista" title="Dónde van tus reglas" intro="El prompt funciona en cualquier IA. En el último paso te dice dónde pegarlas según lo que elegiste.">
+  <Tools items={[
+    ["ChatGPT, Claude, Gemini", "en las instrucciones personalizadas"],
+    ["Un proyecto de código", "un archivo AGENTS.md en la carpeta principal"],
+  ]} />
+  <div class="step__actions">
+    <ShareButton />
+  </div>
+  <p class="aside-line">Menos es más: una regla que no cambia nada solo ocupa espacio.</p>
+</Section>
