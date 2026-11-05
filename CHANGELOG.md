@@ -1,5 +1,9 @@
 # Cambios
 
+## 1.3.0 · 5 nov 2026
+
+- Recurso nuevo «Crea tus reglas»: prompt que convierte lo que le corriges a tu IA en reglas listas para copiar, con su imagen para compartir.
+
 ## 1.2.0 · 27 oct 2026
 
 - El sitio ahora se genera con Astro: el contenido vive en `.mdx` y el diseño en componentes. Las URLs, el progreso guardado y los eventos de GoatCounter no cambian.
