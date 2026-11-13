@@ -1,0 +1,74 @@
+---
+guide: mcp
+etiqueta: Prompt
+titulo: Elige tus *conectores*
+lede: Pega este prompt en tu IA. Te pregunta qué apps usas y te dice cuáles conectar, con qué permisos y cuáles no valen la pena.
+descripcion: Un prompt que te dice qué conectar a tu IA y con qué permisos, más una lista de conectores útiles. Por @_antonio.selvas.
+og:
+  titulo: Elige tus conectores
+  descripcion: Un prompt que te dice qué conectar a tu IA y con qué permisos, más una lista de conectores útiles.
+  imagen: assets/og/elige-tus-conectores.png
+  alt: "Elige tus conectores: qué conectar a tu IA y con qué permisos"
+portada:
+  emoji: 🔌
+  color: verde
+  resumen: Un prompt para decidir qué apps conectar a tu IA y con qué permisos, más una lista de conectores útiles.
+  accion: Copiar el prompt
+actualizado: 2026-11-12
+cta:
+  canal:
+    label: Canal de difusión
+    title: ¿Ya conectaste algo?
+    body: "En mi canal voy compartiendo lo que estoy construyendo con IA, lo que se me rompe y lo que sí me funcionó."
+    button: Unirme al canal
+    meta: Sin spam · tres mensajes a la semana
+  perfil:
+    label: ¿Ya conectaste algo?
+    title: Cuéntame qué conector te sirvió
+    body: "Respóndeme por DM con el que más usas. Voy subiendo lo que construyo con IA, lo que se me rompe y lo que sí me funcionó."
+    button: Ir a mi perfil
+---
+import Btn from "../../components/Btn.astro";
+import CopyButton from "../../components/CopyButton.astro";
+import ShareButton from "../../components/ShareButton.astro";
+import Conectores from "../../components/Conectores.astro";
+import Section from "../../components/guia/Section.astro";
+import prompt from "./elige-tus-conectores.prompt.txt?raw";
+
+<div class="cover-action">
+  <Btn copy="prompt-mcp" copyRaw track="copiar" meta="Funciona en cualquier IA">Copiar prompt</Btn>
+</div>
+
+<aside class="note" aria-label="Cómo usarlo">
+  <p class="label">Cómo usarlo</p>
+  <ul class="note__lines">
+    <li>1 · Copia el prompt.</li>
+    <li>2 · Pégalo en tu IA.</li>
+    <li>3 · Cuéntale qué apps usas y para qué.</li>
+  </ul>
+</aside>
+
+<Section id="prompt-title" label="El prompt" title="Lo que vas a pegar">
+  <div class="prompt prompt--full">
+    <pre class="prompt__text prompt__text--full" id="prompt-mcp">{prompt.trim()}</pre>
+    <CopyButton target="prompt-mcp" raw track="copiar-abajo" />
+  </div>
+  <p class="copy-hint">¿No se copió? Mantén presionado el texto y elige «Seleccionar todo».</p>
+</Section>
+
+<Section id="conectores-title" label="Para estudiar y programar" title="Conectores que sí valen la pena">
+  <Conectores items={[
+    { nombre: "Google Calendar", uso: "Ver tus entregas y organizar tu semana.", permiso: "Solo leer. Puede crear y borrar eventos, así que revisa antes de aprobar.", riesgo: "bajo", donde: "Claude, ChatGPT, Gemini" },
+    { nombre: "Google Drive", uso: "Buscar y resumir tus apuntes, PDFs y documentos.", permiso: "Solo leer. En algunas IAs también puede mover o borrar archivos.", riesgo: "medio", donde: "Claude, ChatGPT (Plus o superior)" },
+    { nombre: "Notion", uso: "Usar tus apuntes y planes de estudio en el chat.", permiso: "Comparte solo las páginas que necesites.", riesgo: "medio", donde: "Claude, ChatGPT" },
+    { nombre: "GitHub", uso: "Preguntar sobre el código de tus repositorios.", permiso: "Solo lectura (en Claude ya viene así).", riesgo: "bajo", donde: "Claude, ChatGPT" },
+    { nombre: "Canva", uso: "Armar presentaciones y diseños desde el chat.", permiso: "Revisa antes de que publique o comparta algo.", riesgo: "bajo", donde: "Claude, ChatGPT" },
+    { nombre: "Gmail", uso: "Resumir correos de profes y avisos de la escuela.", permiso: "Solo leer. Nunca dejes que envíe sin revisar.", riesgo: "alto", nota: "Lee mensajes de desconocidos y puede enviar.", donde: "Claude, ChatGPT, Gemini" },
+    { nombre: "Microsoft 365", uso: "Outlook, OneDrive y Teams, si tu escuela los usa.", permiso: "Lo aprueba el administrador de tu escuela.", riesgo: "medio", donde: "Claude (con cuenta escolar o de trabajo)" },
+  ]} />
+  <p class="copy-hint">Revisado en noviembre de 2026. Los conectores y los planes cambian seguido: confirma en Ajustes → Conectores o Apps de tu IA.</p>
+  <div class="step__actions">
+    <ShareButton />
+  </div>
+  <p class="aside-line">Conecta solo lo que usas y con el permiso mínimo. Si un conector puede enviar, borrar o publicar, revisa cada acción antes de aprobarla.</p>
+</Section>

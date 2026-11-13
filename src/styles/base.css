@@ -675,6 +675,24 @@ body.all-done .tally { box-shadow: var(--shadow), inset 0 0 0 2px var(--accent);
 .tools b { font-weight: 650; }
 .tools span { font-family: var(--f-mono); font-size: .8rem; color: var(--ink-2); text-align: right; }
 
+/* ---------- Conectores (tarjeta por conector con chip de riesgo) ---------- */
+.conns { display: grid; gap: .75rem; margin: 1.1rem 0 0; padding: 0; list-style: none; }
+.conn {
+  padding: 1rem 1.05rem 1.05rem;
+  border-radius: 16px;
+  background: var(--card);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.conn__head { display: flex; align-items: center; justify-content: space-between; gap: .75rem; flex-wrap: wrap; }
+.conn__name { margin: 0; font-family: var(--f-text); font-size: 1.05rem; font-weight: 650; letter-spacing: -.01em; }
+.conn__risk { flex-shrink: 0; }
+.conn__use { margin: .4rem 0 0; font-size: .98rem; line-height: 1.45; text-wrap: pretty; }
+.conn__note { margin: .35rem 0 0; font-size: .88rem; line-height: 1.4; color: var(--rosa-ink); }
+.conn__meta { display: grid; gap: .35rem; margin: .8rem 0 0; padding-top: .75rem; border-top: 1px dashed var(--line); }
+.conn__meta div { display: grid; grid-template-columns: 4.6rem 1fr; gap: .6rem; }
+.conn__meta dt { font-family: var(--f-mono); font-size: .72rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-3); padding-top: .12rem; }
+.conn__meta dd { margin: 0; font-size: .92rem; line-height: 1.4; color: var(--ink-2); }
+
 /* ---------- Prompts copiables ---------- */
 .prompts { display: grid; gap: .9rem; margin-top: 1.1rem; counter-reset: p; }
 .prompt {
