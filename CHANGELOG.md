@@ -1,5 +1,10 @@
 # Cambios
 
+## 1.4.0 · 12 nov 2026
+
+- Recurso nuevo «Elige tus conectores»: prompt que te dice qué conectar a tu IA y con qué permisos, más una lista de 7 conectores útiles con su nivel de riesgo y su imagen para compartir.
+- Componente `<Conectores>` para las tarjetas de conectores.
+
 ## 1.3.0 · 5 nov 2026
 
 - Recurso nuevo «Crea tus reglas»: prompt que convierte lo que le corriges a tu IA en reglas listas para copiar, con su imagen para compartir.

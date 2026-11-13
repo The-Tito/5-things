@@ -1,0 +1,31 @@
+---
+/* Tarjetas de conectores: nombre, para qué sirve, permiso, riesgo y dónde está.
+   <Conectores items={[{ nombre, uso, permiso, riesgo: "bajo"|"medio"|"alto", nota?, donde }]} /> */
+interface Item {
+  nombre: string;
+  uso: string;
+  permiso: string;
+  riesgo: "bajo" | "medio" | "alto";
+  nota?: string;     // por qué ese riesgo, si hace falta explicarlo
+  donde: string;
+}
+interface Props { items: Item[] }
+const { items } = Astro.props;
+const color = { bajo: "verde", medio: "amarillo", alto: "rosa" } as const;
+---
+<ul class="conns">
+  {items.map((c) => (
+    <li class="conn">
+      <div class="conn__head">
+        <h3 class="conn__name">{c.nombre}</h3>
+        <span class={`tag conn__risk t-${color[c.riesgo]}`}>Riesgo {c.riesgo}</span>
+      </div>
+      <p class="conn__use">{c.uso}</p>
+      {c.nota && <p class="conn__note">{c.nota}</p>}
+      <dl class="conn__meta">
+        <div><dt>Permiso</dt><dd>{c.permiso}</dd></div>
+        <div><dt>Dónde</dt><dd>{c.donde}</dd></div>
+      </dl>
+    </li>
+  ))}
+</ul>

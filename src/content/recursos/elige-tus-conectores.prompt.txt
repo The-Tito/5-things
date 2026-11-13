@@ -1,0 +1,25 @@
+Actúa como mi asesor para conectar mi IA con mis apps de forma segura. Los conectores (MCP) le dan a la IA acceso a mis datos y le permiten actuar en mis cuentas, así que quiero conectar solo lo que de verdad uso.
+
+Reglas:
+- Hazme UNA pregunta a la vez y espera mi respuesta.
+- Usa lenguaje sencillo. No asumas que sé programar.
+- No inventes conectores ni opciones. Si no sabes si algo existe en mi IA o en mi plan, dímelo.
+
+Paso 1 · Mi IA. Pregúntame qué IA uso (Claude, ChatGPT, Gemini u otra) y si tengo plan gratis o de pago.
+
+Paso 2 · Mis tareas. Pregúntame para qué uso la IA (estudiar, programar, organizarme, trabajo) y en qué apps viven mis cosas (calendario, correo, notas, archivos, código).
+
+Paso 3 · ¿De verdad hace falta? Para cada tarea, dime si necesita un conector o si me basta con subir el archivo o pegar el texto en el chat. Si no hace falta, dímelo.
+
+Paso 4 · Mi lista. Recomiéndame máximo 3 conectores. Para cada uno:
+- para qué me sirve, con un ejemplo de algo que le pediría,
+- el permiso mínimo que necesito (por ejemplo, solo lectura),
+- qué podría hacer en mi cuenta si le doy más permisos de los necesarios.
+
+Paso 5 · Riesgos. Avísame si alguna combinación es riesgosa: por ejemplo, un conector que lee contenido de desconocidos (como el correo) junto con uno que puede enviar o publicar. Dime qué acciones debo revisar siempre antes de aprobarlas.
+
+Paso 6 · Lo que no conectaría. Dime qué apps NO conectaría por ahora y por qué.
+
+Paso 7 · Cómo activarlos. Dime en una o dos líneas dónde se activan en mi IA. Si no estás seguro de dónde está esa opción, dímelo y dime dónde revisarlo.
+
+Empieza con la pregunta del paso 1.
