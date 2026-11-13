@@ -13,6 +13,8 @@ src/
       crea-tu-skill.prompt.txt  el texto exacto que se copia
       crea-tus-reglas.mdx     prompt para crear reglas (CTA «REGLAS»)
       crea-tus-reglas.prompt.txt
+      elige-tus-conectores.mdx  prompt y lista de conectores (CTA «MCP»)
+      elige-tus-conectores.prompt.txt
     */_plantilla.mdx          esqueletos (el «_» hace que no se publiquen)
   content.config.ts           qué campos lleva cada guía y cada recurso (se validan al compilar)
   components/                 piezas: botones, tarjeta, bloques, bloque final, pie
@@ -52,6 +54,7 @@ Todo está en `src/site.ts`:
   - Antes de la carrera: `https://the-tito.github.io/5-things/antes-de-la-carrera/?ref=reel-antes`
   - Crea tu skill: `https://the-tito.github.io/5-things/crea-tu-skill/?ref=dm-skill`
   - Crea tus reglas: `https://the-tito.github.io/5-things/crea-tus-reglas/?ref=dm-reglas`
+  - Elige tus conectores: `https://the-tito.github.io/5-things/elige-tus-conectores/?ref=dm-mcp`
 - Revisa la vista previa en el [depurador de Meta](https://developers.facebook.com/tools/debug/) y abre el link desde Instagram en tu celular, no solo desde Chrome.
 
 ## Ramas (Git Flow)
@@ -88,13 +91,17 @@ Versiones: una guía o un recurso nuevo sube el número de en medio (`1.1.0`); u
 4. Quita `borrador: true` cuando esté lista. La portada la agrega sola.
 5. Publícala siguiendo el flujo de ramas de arriba.
 
-El contenido se escribe en Markdown dentro del `.mdx` (negritas, `código`, párrafos) y las piezas especiales son componentes: `<Card>`, `<Why>`, `<Start>`, `<Step>`, `<Ignore>`, `<Pills>`, `<Glossary>`, `<Prompt>`, `<Weeks>`, `<Tools>`, `<Btn>`, `<CopyButton>`, `<ShareButton>`. En los títulos, `*palabra*` lleva el resaltado de marcador.
+El contenido se escribe en Markdown dentro del `.mdx` (negritas, `código`, párrafos) y las piezas especiales son componentes: `<Card>`, `<Why>`, `<Start>`, `<Step>`, `<Ignore>`, `<Pills>`, `<Glossary>`, `<Prompt>`, `<Weeks>`, `<Tools>`, `<Conectores>`, `<Btn>`, `<CopyButton>`, `<ShareButton>`. En los títulos, `*palabra*` lleva el resaltado de marcador.
 
 **Para no romper nada:** el progreso guardado y las métricas dependen de `guide` y de los atributos `data-*` que `app.js` lee (`data-step`, `data-copy`, `data-track`…). Si cambias un componente, revisa que las páginas publicadas sigan generando los mismos atributos.
 
 ## Copiar textos largos
 
 `data-copy="id"` copia el texto del elemento `#id` en una sola línea (sirve para prompts cortos). Para un prompt con pasos, agrega `data-copy-raw`: conserva los saltos de línea, también en la vía de respaldo del navegador de Instagram. En los componentes es `<Btn copy="id" copyRaw>` y `<CopyButton target="id" raw />`. Guarda el texto en un `.txt` junto al `.mdx` e impórtalo con `?raw`, así lo que se ve y lo que se copia salen del mismo archivo.
+
+## Mantenimiento
+
+- **Elige tus conectores:** la lista de conectores (dónde está cada uno, planes, permisos) cambia seguido. Revísala cada 2 o 3 meses en `src/content/recursos/elige-tus-conectores.mdx` y actualiza la línea «Revisado en…» y el campo `actualizado`.
 
 ## Medición
 
@@ -113,5 +120,8 @@ Eventos que se registran en GoatCounter, con el `guide` de cada página como pre
 | `reglas/copiar` · `reglas/copiar-abajo` | prompt copiado (botón de arriba / de abajo) |
 | `reglas/compartir` | «Mándatelo a tu compu» |
 | `reglas/canal` · `reglas/perfil` | clic en el bloque final |
+| `mcp/copiar` · `mcp/copiar-abajo` | prompt copiado (botón de arriba / de abajo) |
+| `mcp/compartir` | «Mándatelo a tu compu» |
+| `mcp/canal` · `mcp/perfil` | clic en el bloque final |
 
-Las visitas que llegan con `?ref=reel-antes`, `?ref=dm-skill` o `?ref=dm-reglas` aparecen en **Top referrers** con ese nombre. Para filtrar una página en el panel, escribe su prefijo (`antes/`, `skill/`, `reglas/`) o `5-things` en «Filter paths». A los 7 días, anota: comentarios ANTES → visitas con ese ref → clics al canal.
+Las visitas que llegan con `?ref=reel-antes`, `?ref=dm-skill`, `?ref=dm-reglas` o `?ref=dm-mcp` aparecen en **Top referrers** con ese nombre. Para filtrar una página en el panel, escribe su prefijo (`antes/`, `skill/`, `reglas/`, `mcp/`) o `5-things` en «Filter paths». A los 7 días, anota: comentarios ANTES → visitas con ese ref → clics al canal.
